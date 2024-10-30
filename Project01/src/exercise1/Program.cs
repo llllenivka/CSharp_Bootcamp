@@ -12,14 +12,7 @@ class Program
             D = new Coordinate()
         };
 
-        quadrilateral.A.x = UserInput.ReadNumber();
-        quadrilateral.A.y = UserInput.ReadNumber();
-        quadrilateral.B.x = UserInput.ReadNumber();
-        quadrilateral.B.y = UserInput.ReadNumber();
-        quadrilateral.C.x = UserInput.ReadNumber();
-        quadrilateral.C.y = UserInput.ReadNumber();
-        quadrilateral.D.x = UserInput.ReadNumber();
-        quadrilateral.D.y = UserInput.ReadNumber();
+        quadrilateral = UserInput.ReadCoordinates(quadrilateral);
 
         UserOutput.ResultSquare(quadrilateral.GetSquare());
     }
@@ -29,20 +22,36 @@ class Program
 
 
 public class UserInput {
-    public static double ReadNumber() {
-        double number;
-        string numberString = Console.ReadLine();
-        while(!double.TryParse(numberString, out number)) {
-            UserOutput.ErrorNumber();
+    public static ConvexQuadrilateral ReadCoordinates(ConvexQuadrilateral quadrilateral) {
+        quadrilateral.A = ReadCoordinate(quadrilateral.A);
+        quadrilateral.B = ReadCoordinate(quadrilateral.B);
+        quadrilateral.C = ReadCoordinate(quadrilateral.C);
+        quadrilateral.D = ReadCoordinate(quadrilateral.D);
+
+        return quadrilateral;
+    }
+
+    public static Coordinate ReadCoordinate(Coordinate coordinate) {
+        coordinate.x = ReadNumber(coordinate.x);
+        coordinate.y = ReadNumber(coordinate.y);
+        return coordinate;
+    }
+    public static double ReadNumber(double number) {
+        while(true) {
+            string numberString = Console.ReadLine();
+            if(double.TryParse(numberString, out number)) {
+                return number;
+            } else {
+                UserOutput.ErrorNumber();
+            }
         }
-        return number;
     }
 
 }
 
 public class UserOutput {
     public static void ErrorNumber() {
-        Console.WriteLine("Couldn't parse a number. Please, try again ");
+        Console.WriteLine("Couldn't parse a number. Please, try again");
     }
 
     public static void ResultSquare(double square) {
@@ -71,9 +80,7 @@ public class Coordinate {
 
 public class SquareTriangel {
     public static double GetSquareTriangel(Coordinate A, Coordinate B, Coordinate C) {
-        double square = 0.5 * Math.Abs(A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.x - B.y));
+        double square = 0.5 * Math.Abs(A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
         return square;
     }
 }
-
-
