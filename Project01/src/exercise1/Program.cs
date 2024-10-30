@@ -61,10 +61,10 @@ public class UserOutput {
 }
 
 public class ConvexQuadrilateral {
-    public Coordinate A { get; set; }
-    public Coordinate B { get; set; }
-    public Coordinate C { get; set; }
-    public Coordinate D { get; set; }
+    public Coordinate ? A { get; set; }
+    public Coordinate ? B { get; set; }
+    public Coordinate ? C { get; set; }
+    public Coordinate ? D { get; set; }
 
     public double GetSquare() {
         double square = SquareTriangel.GetSquareTriangel(A, B, D) + SquareTriangel.GetSquareTriangel(C, B, D);
