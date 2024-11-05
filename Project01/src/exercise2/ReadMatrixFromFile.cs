@@ -1,7 +1,6 @@
 public class ReadMatrixFromFile {
     public static bool  IsCorrectFile(string ? filename) {
         bool code = true;
-        // filename = Console.ReadLine(); ПОТОМ ДОБАВЬ!!!!!!!!!!!!
         if(!File.Exists(filename)) {
             OutputUser.ErrorFile();
             code = false;
@@ -14,8 +13,8 @@ public class ReadMatrixFromFile {
         return File.ReadAllLines(filename);
     }
 
-    public static List<List<int>> ReadMatrix(string filename) {
-        List<List<int>> matrix = new List<List<int>>();
+    public static List<List<double>> ReadMatrix(string filename) {
+        var matrix = new List<List<double>>();
         string[] matrixString = ReadString(filename);
 
         foreach(var line in matrixString) {
@@ -24,8 +23,8 @@ public class ReadMatrixFromFile {
         return matrix;
     }
 
-    private static List<int> PushMatrix(string line) {
-        List<int> lineOfMatrix = new List<int>();
+    private static List<double> PushMatrix(string line) {
+        var lineOfMatrix = new List<double>();
         string[] splitLine = line.Split(" ");
 
         foreach(var numberString in splitLine) {
