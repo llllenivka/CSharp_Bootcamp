@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 class Program
 {
     static void Main() {
@@ -18,11 +17,10 @@ class Program
     }
 }
 
-
-
-
 public class UserInput {
     public static ConvexQuadrilateral ReadCoordinates(ConvexQuadrilateral quadrilateral) {
+        Console.WriteLine("Enter the coordinates of the vertices of the quadrilateral: ");
+
         quadrilateral.A = ReadCoordinate(quadrilateral.A);
         quadrilateral.B = ReadCoordinate(quadrilateral.B);
         quadrilateral.C = ReadCoordinate(quadrilateral.C);
@@ -38,7 +36,7 @@ public class UserInput {
     }
     public static double ReadNumber(double number) {
         while(true) {
-            string numberString = Console.ReadLine();
+            string ? numberString = Console.ReadLine();
             if(double.TryParse(numberString, out number)) {
                 return number;
             } else {
@@ -50,14 +48,8 @@ public class UserInput {
 }
 
 public class UserOutput {
-    public static void ErrorNumber() {
-        Console.WriteLine("Couldn't parse a number. Please, try again");
-    }
-
-    public static void ResultSquare(double square) {
-        Console.WriteLine($"Square = {square}");
-    }
-    
+    public static void ErrorNumber() => Console.WriteLine("Couldn't parse a number. Please, try again");
+    public static void ResultSquare(double square) => Console.WriteLine($"Square = {square}");
 }
 
 public class ConvexQuadrilateral {
@@ -76,7 +68,6 @@ public class Coordinate {
     public double x { get; set; }
     public double y { get; set; }
 }
-
 
 public class SquareTriangel {
     public static double GetSquareTriangel(Coordinate A, Coordinate B, Coordinate C) {

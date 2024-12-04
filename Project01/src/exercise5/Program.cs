@@ -2,6 +2,7 @@
 
 class MyProgram {
     static void Main(){
+        Console.WriteLine("Enter a file name :");
         string ? filename = Console.ReadLine();
         if(filename != null) {
             var word = new WordFrequency();

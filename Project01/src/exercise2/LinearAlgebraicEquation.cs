@@ -4,6 +4,7 @@ public class LinearAlgebraicEquation {
     public int SizeMatrix { get; set; }
 
     public void Calculation() {
+        Console.WriteLine("Уnter a file name : ");
         filename = Console.ReadLine();
         if(!ReadMatrixFromFile.IsCorrectFile(filename)) return;
         matrix = ReadMatrixFromFile.ReadMatrix(filename!);
@@ -32,6 +33,5 @@ public class LinearAlgebraicEquation {
         SizeMatrix = matrix.Count;
         return code;
     }
-
 
 }

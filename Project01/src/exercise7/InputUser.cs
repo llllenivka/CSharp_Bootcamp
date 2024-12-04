@@ -38,7 +38,7 @@ static class InputUser
             if(string.IsNullOrEmpty(input))
             {
                 Message("Incorrect input. Please, try again", ConsoleColor.Red);
-                quantity--;
+                iteraition--;
                 continue;
             }
 
@@ -49,7 +49,7 @@ static class InputUser
             if(!double.TryParse(splitInput[1], out price))
             {
                 Message("Couldn't parse a price. Please, try again", ConsoleColor.Red);
-                quantity--;
+                iteraition--;
                 continue;
             }
             
@@ -62,7 +62,7 @@ static class InputUser
             if(productPrices.ContainsKey(product))
             {
                 Message("This product is already on the list. Please, try again", ConsoleColor.Red);
-                quantity--;
+                iteraition--;
                 continue;
             }
 

@@ -114,11 +114,6 @@ namespace MyProgram {
                 return val;
             }
         }
-
-        public int Peak() {
-            return head.value;
-        }
-        
     }
 
     public class Node {
